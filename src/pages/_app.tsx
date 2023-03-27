@@ -5,8 +5,6 @@ import { Be_Vietnam_Pro } from "next/font/google";
 import { ThemeProvider } from "@emotion/react";
 import theme from "components/theme/theme";
 import { Layout } from "components/layout";
-
-import "../styles/HomeMillion.css";
 import "../styles/HomeProperty.css";
 const beVietnam = Be_Vietnam_Pro({
   subsets: ["vietnamese"],

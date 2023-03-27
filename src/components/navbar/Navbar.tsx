@@ -228,14 +228,20 @@ export default function Navbar() {
                 aria-label="account of current user"
                 href="/tai-khoan/dang-tin"
               >
-                <PostAddIcon color="primary" />
+                <PostAddIcon
+                  color="primary"
+                  sx={{ stroke: "#ffffff", strokeWidth: 1 }}
+                />
               </IconButton>
               <IconButton
                 size="small"
                 aria-label="account of current user"
                 href="/tai-khoan"
               >
-                <AccountCircleOutlinedIcon color="primary" />
+                <AccountCircleOutlinedIcon
+                  color="primary"
+                  sx={{ stroke: "#ffffff", strokeWidth: 1 }}
+                />
               </IconButton>
               <IconButton
                 size="small"

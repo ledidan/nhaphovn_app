@@ -113,7 +113,7 @@ const HomeMillions = () => {
             <AntTab label="Mới nhất" {...a11yProps(1)} />
           </AntTabs>
         </Box>
-        <TabPanel value={value} index={1}>
+        <TabPanel value={value} index={0}>
           <div className="wiper-millions-cards  ">
             <Swiper
               pagination={{
@@ -121,22 +121,22 @@ const HomeMillions = () => {
                 dynamicBullets: true,
               }}
               modules={[Pagination]}
-              slidesPerView={1.15}
+              slidesPerView={1.2}
               scrollbar={{ draggable: true }}
               spaceBetween={15}
               className="mySwiper"
               breakpoints={{
-                640: {
-                  width: 640,
+                480: {
+                  slidesPerView: 1,
+                },
+                576: {
                   slidesPerView: 2,
                 },
                 768: {
-                  width: 768,
-                  slidesPerView: 2,
+                  slidesPerView: 3,
                 },
                 1024: {
-                  width: 1024,
-                  slidesPerView: 3,
+                  slidesPerView: 4,
                 },
               }}
             >
@@ -323,7 +323,7 @@ const HomeMillions = () => {
             </Swiper>
           </div>
         </TabPanel>
-        <TabPanel value={value} index={0}>
+        <TabPanel value={value} index={1}>
           <div className="wiper-millions-cards  ">
             <Swiper
               pagination={{
@@ -331,22 +331,22 @@ const HomeMillions = () => {
                 dynamicBullets: true,
               }}
               modules={[Pagination]}
-              slidesPerView={1.15}
+              slidesPerView={1.2}
               scrollbar={{ draggable: true }}
               spaceBetween={15}
               className="mySwiper"
               breakpoints={{
-                640: {
-                  width: 640,
+                480: {
+                  slidesPerView: 1,
+                },
+                576: {
                   slidesPerView: 2,
                 },
                 768: {
-                  width: 768,
-                  slidesPerView: 2,
+                  slidesPerView: 3,
                 },
                 1024: {
-                  width: 1024,
-                  slidesPerView: 3,
+                  slidesPerView: 4,
                 },
               }}
             >

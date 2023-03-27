@@ -6,7 +6,8 @@ import styled from "@emotion/styled";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
+import WatchLaterOutlinedIcon from "@mui/icons-material/WatchLaterOutlined";
+import CollectionsOutlinedIcon from "@mui/icons-material/CollectionsOutlined";
 import CardContent from "@mui/material/CardContent";
 // Import Swiper styles
 import "swiper/css";
@@ -89,7 +90,7 @@ const HomeProperty = () => {
     setValue(newValue);
   };
   return (
-    <section className="home_properties relative overflow-hidden mt-20">
+    <section className="home_properties relative overflow-hidden mt-16">
       <Container className="home_property_inner">
         <div className=" flex items-center justify-between">
           <Typography variant="h5">Tin bán nhà phố mới nhất</Typography>
@@ -110,55 +111,285 @@ const HomeProperty = () => {
             </AntTabs>
           </Box>
           <TabPanel value={value} index={0}>
-            <div className="wiper-millions-cards  ">
+            <div className="swiper-property-cards">
               <Swiper
                 pagination={{
                   clickable: true,
                   dynamicBullets: true,
                 }}
                 modules={[Pagination]}
-                slidesPerView={1.15}
+                slidesPerView={1.5}
                 scrollbar={{ draggable: true }}
                 spaceBetween={15}
                 className="mySwiper"
                 breakpoints={{
-                  640: {
-                    width: 640,
+                  480: {
+                    slidesPerView: 1,
+                  },
+                  576: {
                     slidesPerView: 2,
                   },
                   768: {
-                    width: 768,
-                    slidesPerView: 2,
+                    slidesPerView: 3,
                   },
                   1024: {
-                    width: 1024,
-                    slidesPerView: 3,
+                    slidesPerView: 4,
                   },
                 }}
               >
                 <SwiperSlide>
-                  <Box className="rounded-lg overflow-hidden shadow-2xl relative cursor-pointer">
-                    <Card sx={{ maxWidth: 345 }}>
-                      <Image
-                        alt="green iguana"
-                        height={300}
-                        width={300}
-                        src="/README.jpg"
-                      />
-                      <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
-                          Lizard
+                  <Box className="rounded overflow-hidden relative cursor-pointer">
+                    <Card sx={{ maxWidth: 315 }} variant="outlined">
+                      <div className="card-image relative">
+                        <Image
+                          alt="green iguana"
+                          height={300}
+                          width={300}
+                          src="/README.jpg"
+                        />
+                        <div className="text-white text-sm post-quantity-image absolute bottom-3 right-2 flex items-center">
+                          <p>
+                            <CollectionsOutlinedIcon
+                              sx={{ stroke: "#7d7d7d", strokeWidth: 1 }}
+                            />
+                          </p>
+                          <p className="ml-2">5</p>
+                        </div>
+                      </div>
+
+                      <CardContent className="flex flex-col text-left w-full">
+                        <Typography
+                          gutterBottom
+                          color={"#dc3545"}
+                          variant="subtitle2"
+                          className="uppercase"
+                          fontWeight={700}
+                        >
+                          Bán nhà MẶT PHỐ VĨNH HƯNG, Quận Hoàng Mai 60M*5T, MT
+                          5M, SIÊU PHẨM MẶT PHỐ, KINH DOANH, GARA Ô TÔ
                         </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          Lizards are a widespread group of squamate reptiles,
-                          with over 6,000 species, ranging across all continents
-                          except Antarctica
+                        <Typography variant="subtitle2" color="text.secondary">
+                          Nguyễn Thị Minh Khai, Phường Vĩnh Hưng, Hoàng Mai, Hà
+                          Nội
                         </Typography>
                       </CardContent>
-                      <CardActions>
-                        <button>Share</button>
-                        <button>Learn More</button>
-                      </CardActions>
+                      <CardContent className="flex text-xs mb-2 items-center justify-between ">
+                        <p className="home-price font-bold">66 tỷ</p>
+                        <p className="home-area card-title pl-3 font-bold">
+                          61m2
+                        </p>
+                        <p className="home-m2 pl-3 font-bold max-[680px]:hidden">
+                          ~136.67 triệu/ m2
+                        </p>
+                      </CardContent>
+                      <div className="text-xs pb-3 px-4 property-card__footer flex  items-center ">
+                        <p>
+                          <WatchLaterOutlinedIcon
+                            fontSize="small"
+                            color="error"
+                            sx={{ stroke: "#ffffff", strokeWidth: 1 }}
+                          />
+                        </p>
+                        <p className="flex items-center px-1 text-gray-500">
+                          2 phút trước
+                        </p>
+                      </div>
+                    </Card>
+                  </Box>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <Box className="rounded overflow-hidden relative cursor-pointer">
+                    <Card sx={{ maxWidth: 315 }} variant="outlined">
+                      <Image
+                        alt="green iguana"
+                        height={500}
+                        width={500}
+                        src="/README.jpg"
+                      />
+                      <CardContent className="flex flex-col text-left w-full">
+                        <Typography
+                          gutterBottom
+                          color={"#dc3545"}
+                          variant="subtitle2"
+                          className="uppercase"
+                          fontWeight={700}
+                        >
+                          Bán nhà MẶT PHỐ VĨNH HƯNG, Quận Hoàng Mai 60M*5T, MT
+                          5M, SIÊU PHẨM MẶT PHỐ, KINH DOANH, GARA Ô TÔ
+                        </Typography>
+                        <Typography variant="subtitle2" color="text.secondary">
+                          Nguyễn Thị Minh Khai, Phường Vĩnh Hưng, Hoàng Mai, Hà
+                          Nội
+                        </Typography>
+                      </CardContent>
+                      <CardContent className="flex text-xs mb-2 items-center justify-between ">
+                        <p className="home-price font-bold">66 tỷ</p>
+                        <p className="home-area card-title pl-3 font-bold">
+                          61m2
+                        </p>
+                        <p className="home-m2 pl-3 font-bold max-[680px]:hidden">
+                          ~136.67 triệu/ m2
+                        </p>
+                      </CardContent>
+                      <div className="text-xs pb-3 px-4 property-card__footer flex  items-center ">
+                        <p>
+                          <WatchLaterOutlinedIcon
+                            fontSize="small"
+                            color="error"
+                            sx={{ stroke: "#ffffff", strokeWidth: 1 }}
+                          />
+                        </p>
+                        <p className="flex items-center px-1 text-gray-500">
+                          2 phút trước
+                        </p>
+                      </div>
+                    </Card>
+                  </Box>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <Box className="rounded overflow-hidden relative cursor-pointer">
+                    <Card sx={{ maxWidth: 315 }} variant="outlined">
+                      <Image
+                        alt="green iguana"
+                        height={500}
+                        width={500}
+                        src="/README.jpg"
+                      />
+                      <CardContent className="flex flex-col text-left w-full">
+                        <Typography
+                          gutterBottom
+                          color={"#dc3545"}
+                          variant="subtitle2"
+                          className="uppercase"
+                          fontWeight={700}
+                        >
+                          Bán nhà MẶT PHỐ VĨNH HƯNG, Quận Hoàng Mai 60M*5T, MT
+                          5M, SIÊU PHẨM MẶT PHỐ, KINH DOANH, GARA Ô TÔ
+                        </Typography>
+                        <Typography variant="subtitle2" color="text.secondary">
+                          Nguyễn Thị Minh Khai, Phường Vĩnh Hưng, Hoàng Mai, Hà
+                          Nội
+                        </Typography>
+                      </CardContent>
+                      <CardContent className="flex text-xs mb-2 items-center justify-between ">
+                        <p className="home-price font-bold">66 tỷ</p>
+                        <p className="home-area card-title pl-3 font-bold">
+                          61m2
+                        </p>
+                        <p className="home-m2 pl-3 font-bold max-[680px]:hidden">
+                          ~136.67 triệu/ m2
+                        </p>
+                      </CardContent>
+                      <div className="text-xs pb-3 px-4 property-card__footer flex  items-center ">
+                        <p>
+                          <WatchLaterOutlinedIcon
+                            fontSize="small"
+                            color="error"
+                            sx={{ stroke: "#ffffff", strokeWidth: 1 }}
+                          />
+                        </p>
+                        <p className="flex items-center px-1 text-gray-500">
+                          2 phút trước
+                        </p>
+                      </div>
+                    </Card>
+                  </Box>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <Box className="rounded overflow-hidden relative cursor-pointer">
+                    <Card sx={{ maxWidth: 315 }} variant="outlined">
+                      <Image
+                        alt="green iguana"
+                        height={500}
+                        width={500}
+                        src="/README.jpg"
+                      />
+                      <CardContent className="flex flex-col text-left w-full">
+                        <Typography
+                          gutterBottom
+                          color={"#dc3545"}
+                          variant="subtitle2"
+                          className="uppercase"
+                          fontWeight={700}
+                        >
+                          Bán nhà MẶT PHỐ VĨNH HƯNG, Quận Hoàng Mai 60M*5T, MT
+                          5M, SIÊU PHẨM MẶT PHỐ, KINH DOANH, GARA Ô TÔ
+                        </Typography>
+                        <Typography variant="subtitle2" color="text.secondary">
+                          Nguyễn Thị Minh Khai, Phường Vĩnh Hưng, Hoàng Mai, Hà
+                          Nội
+                        </Typography>
+                      </CardContent>
+                      <CardContent className="flex text-xs mb-2 items-center justify-between ">
+                        <p className="home-price font-bold">66 tỷ</p>
+                        <p className="home-area card-title pl-3 font-bold">
+                          61m2
+                        </p>
+                        <p className="home-m2 pl-3 font-bold max-[680px]:hidden">
+                          ~136.67 triệu/ m2
+                        </p>
+                      </CardContent>
+                      <div className="text-xs pb-3 px-4 property-card__footer flex  items-center ">
+                        <p>
+                          <WatchLaterOutlinedIcon
+                            fontSize="small"
+                            color="error"
+                            sx={{ stroke: "#ffffff", strokeWidth: 1 }}
+                          />
+                        </p>
+                        <p className="flex items-center px-1 text-gray-500">
+                          2 phút trước
+                        </p>
+                      </div>
+                    </Card>
+                  </Box>
+                </SwiperSlide>
+                <SwiperSlide>
+                  <Box className="rounded overflow-hidden relative cursor-pointer">
+                    <Card sx={{ maxWidth: 315 }} variant="outlined">
+                      <Image
+                        alt="green iguana"
+                        height={500}
+                        width={500}
+                        src="/README.jpg"
+                      />
+                      <CardContent className="flex flex-col text-left w-full">
+                        <Typography
+                          gutterBottom
+                          color={"#dc3545"}
+                          variant="subtitle2"
+                          className="uppercase"
+                          fontWeight={700}
+                        >
+                          Bán nhà MẶT PHỐ VĨNH HƯNG, Quận Hoàng Mai 60M*5T, MT
+                          5M, SIÊU PHẨM MẶT PHỐ, KINH DOANH, GARA Ô TÔ
+                        </Typography>
+                        <Typography variant="subtitle2" color="text.secondary">
+                          Nguyễn Thị Minh Khai, Phường Vĩnh Hưng, Hoàng Mai, Hà
+                          Nội
+                        </Typography>
+                      </CardContent>
+                      <CardContent className="flex text-xs mb-2 items-center justify-between ">
+                        <p className="home-price font-bold">66 tỷ</p>
+                        <p className="home-area card-title pl-3 font-bold">
+                          61m2
+                        </p>
+                        <p className="home-m2 pl-3 font-bold max-[680px]:hidden">
+                          ~136.67 triệu/ m2
+                        </p>
+                      </CardContent>
+                      <div className="text-xs pb-3 px-4 property-card__footer flex  items-center ">
+                        <p>
+                          <WatchLaterOutlinedIcon
+                            fontSize="small"
+                            color="error"
+                            sx={{ stroke: "#ffffff", strokeWidth: 1 }}
+                          />
+                        </p>
+                        <p className="flex items-center px-1 text-gray-500">
+                          2 phút trước
+                        </p>
+                      </div>
                     </Card>
                   </Box>
                 </SwiperSlide>

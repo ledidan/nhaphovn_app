@@ -1,6 +1,9 @@
 import HeroSection from "components/homepage/HeroSection";
+import HomeCollection from "components/homepage/HomeCollection";
+import HomeCompanyProject from "components/homepage/HomeCompanyProject";
 import HomeMillions from "components/homepage/HomeMillions";
 import HomeProperty from "components/homepage/HomeProperty";
+import HomeRent from "components/homepage/HomeRent";
 import MainLayout from "components/homepage/MainLayout";
 import Head from "next/head";
 import * as React from "react";
@@ -16,6 +19,9 @@ export default function Home() {
       <MainLayout>
         <HomeMillions />
         <HomeProperty />
+        <HomeCompanyProject />
+        <HomeRent />
+        <HomeCollection />
       </MainLayout>
     </>
   );
