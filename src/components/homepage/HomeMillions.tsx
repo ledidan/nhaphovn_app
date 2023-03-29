@@ -88,7 +88,7 @@ const HomeMillions = () => {
     setValue(newValue);
   };
   return (
-    <Container className="relative overflow-hidden">
+    <Container className="relative overflow-hidden mt-20">
       <section className="home-millions flex items-center justify-between ">
         <Typography variant="h5" color={"#dc3545"}>
           Nhà phố triệu đô

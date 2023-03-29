@@ -3,7 +3,7 @@ import React, { PropsWithChildren } from "react";
 
 const MainLayout = (props: PropsWithChildren) => {
   return (
-    <Box sx={{ maxWidth: "xxl" }} className="mx-auto mt-20">
+    <Box sx={{ maxWidth: "xxl" }} className="mx-auto">
       {props.children}
     </Box>
   );

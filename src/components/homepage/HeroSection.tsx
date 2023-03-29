@@ -1,14 +1,63 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, Menu } from "@mui/material";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import React from "react";
+import useOutsideClickDetector from "components/context/OutSideClickHOF";
 
-const HeroSection = () => {
+const HeroSection = (props: any) => {
   const bgUrl = "https://tecdn.b-cdn.net/img/new/slides/146.webp";
   const backgroundStyle = {
     backgroundPosition: "50%",
     backgroundImage: `url(${bgUrl})`,
     height: 500,
   };
+  const [age, setAge] = React.useState<any>("");
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [selectOpen, setSelectOpen] = React.useState(false);
+  const [reset, setReset] = React.useState("");
+  const menuRef = React.useRef<HTMLUListElement>(null);
+
+  React.useEffect(() => {
+    const handlerBtnSort = (e: any) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setAnchorEl(null);
+        setAnchorEl(e.currentTarget);
+        setSelectOpen(false);
+      }
+      document.addEventListener("mousedown", handlerBtnSort);
+      return () => {
+        document.removeEventListener("mousedown", handlerBtnSort);
+      };
+    };
+  }, [anchorEl, menuRef]);
+
+  const open = Boolean(anchorEl);
+
+  const handleClick = (event: React.MouseEvent<HTMLLIElement>) => {
+    setAnchorEl(event.currentTarget);
+    setSelectOpen(true);
+  };
+
+  const handleOutSideClick = () => {
+    setSelectOpen(false);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleChange = (event: any) => {
+    setAge(event.target.value);
+  };
+
+  // Reset Form
+  const resetForm = () => {
+    setAge("");
+  };
+  // Catch menuRef with event click outside
+  useOutsideClickDetector(menuRef, handleOutSideClick);
+  console.log(age);
   return (
     <>
       <Box
@@ -21,8 +70,8 @@ const HeroSection = () => {
           style={{ backgroundColor: "rgba(0, 0, 0, 0.75)" }}
         >
           <div className="flex h-full items-center justify-center">
-            <div className="px-6 text-center md:px-12">
-              <form className="w-full shadow p-5 rounded-lg bg-white">
+            <div className="w-1/2 px-6 text-center md:px-12">
+              <div className=" shadow p-5 rounded-lg bg-white">
                 <div className="relative mb-3">
                   <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                     <svg
@@ -57,21 +106,83 @@ const HeroSection = () => {
                 <div className="text-end">
                   <Button
                     type="reset"
-                    variant="outlined"
+                    variant="text"
                     color="inherit"
+                    onClick={resetForm}
                     startIcon={<RestartAltIcon />}
                   >
                     Đặt lại
                   </Button>
                 </div>
-                <div>
-                  <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
-                    <select className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
-                      <option value="0">All Type</option>
-                      <option value="for-rent">For Rent</option>
-                      <option value="for-sale">For Sale</option>
-                    </select>
-                    <select className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
+                <Box>
+                  <FormControl sx={{ m: 1, minWidth: 120 }}>
+                    <Select
+                      displayEmpty
+                      value={age}
+                      label="Age"
+                      onChange={handleChange}
+                      open={selectOpen}
+                      ref={menuRef}
+                      onOpen={() => setSelectOpen(true)}
+                      // renderValue={() => `${age}`}
+                    >
+                      <MenuItem value="">
+                        <em>None</em>
+                      </MenuItem>
+                      <MenuItem value={10} onClick={handleClose}>
+                        Ten
+                      </MenuItem>
+                      <MenuItem value={20} onClick={handleClose}>
+                        Twenty
+                      </MenuItem>
+                      <MenuItem value={30} onClick={handleClick}>
+                        Thirty {">"}
+                      </MenuItem>
+                    </Select>
+                    <Menu
+                      open={open}
+                      anchorEl={anchorEl}
+                      onClose={handleClose}
+                      anchorOrigin={{
+                        vertical: "center",
+                        horizontal: "right",
+                      }}
+                      transformOrigin={{
+                        vertical: "center",
+                        horizontal: "left",
+                      }}
+                      sx={{ width: 150 }}
+                    >
+                      <MenuItem
+                        value={40}
+                        onClick={() => {
+                          setAge(40);
+                          setSelectOpen(false);
+                          handleClose();
+                        }}
+                        style={{
+                          maxWidth: 150,
+                        }}
+                      >
+                        Fourty
+                      </MenuItem>
+                      <MenuItem
+                        value={50}
+                        onClick={() => {
+                          setAge(50);
+                          setSelectOpen(false);
+                          handleClose();
+                        }}
+                        style={{
+                          maxWidth: 150,
+                        }}
+                      >
+                        Fifty
+                      </MenuItem>
+                    </Menu>
+                  </FormControl>
+
+                  {/* <select className="cursor-pointer hover:border-black hover:border transition duration-100 px-4 py-3 w-full rounded-md bg-white border border-gray-400  border-transparent  focus:border-gray-600 focus:bg-white focus:text-black focus:ring-0 text-sm">
                       <option value="0">Furnish Type</option>
                       <option value="fully-furnished">Fully Furnished</option>
                       <option value="partially-furnished">
@@ -79,14 +190,14 @@ const HeroSection = () => {
                       </option>
                       <option value="not-furnished">Not Furnished</option>
                     </select>
-                    <select className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
+                    <select className="cursor-pointer hover:border-black hover:border transition duration-100 px-4 py-3 w-full rounded-md bg-white border border-gray-400  border-transparent  focus:border-gray-600 focus:bg-white focus:text-black focus:ring-0 text-sm">
                       <option value="0">Any Price</option>
                       <option value={1000}>RM 1000</option>
                       <option value={2000}>RM 2000</option>
                       <option value={3000}>RM 3000</option>
                       <option value={4000}>RM 4000</option>
                     </select>
-                    <select className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
+                    <select className="cursor-pointer hover:border-black hover:border transition duration-100 px-4 py-3 w-full rounded-md bg-white border border-gray-400  border-transparent  focus:border-gray-600 focus:bg-white focus:text-black focus:ring-0 text-sm">
                       <option value="0">Floor Area</option>
                       <option value={200}>200 sq.ft</option>
                       <option value={400}>400 sq.ft</option>
@@ -95,7 +206,7 @@ const HeroSection = () => {
                       <option value="1000 sq.ft">1000</option>
                       <option value="1200 sq.ft">1200</option>
                     </select>
-                    <select className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
+                    <select className="cursor-pointer hover:border-black hover:border transition duration-100 px-4 py-3 w-full rounded-md bg-white border border-gray-400  border-transparent  focus:border-gray-600 focus:bg-white focus:text-black focus:ring-0 text-sm">
                       <option value="0">Bedrooms</option>
                       <option value={1}>1 bedroom</option>
                       <option value={2}>2 bedrooms</option>
@@ -103,7 +214,7 @@ const HeroSection = () => {
                       <option value={4}>4 bedrooms</option>
                       <option value={5}>5 bedrooms</option>
                     </select>
-                    <select className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
+                    <select className="cursor-pointer hover:border-black hover:border transition duration-100 px-4 py-3 w-full rounded-md bg-white border border-gray-400  border-transparent  focus:border-gray-600 focus:bg-white focus:text-black focus:ring-0 text-sm">
                       <option value="0">Bathrooms</option>
                       <option value={1}>1 bathroom</option>
                       <option value={2}>2 bathrooms</option>
@@ -111,15 +222,14 @@ const HeroSection = () => {
                       <option value={4}>4 bathrooms</option>
                       <option value={5}>5 bathrooms</option>
                     </select>
-                    <select className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
+                    <select className="cursor-pointer hover:border-black hover:border transition duration-100 px-4 py-3 w-full rounded-md bg-white border border-gray-400  border-transparent  focus:border-gray-600 focus:bg-white focus:text-black focus:ring-0 text-sm">
                       <option value="0">Bathrooms</option>
                       <option value={1}>1 space</option>
                       <option value={2}>2 space</option>
                       <option value={3}>3 space</option>
-                    </select>
-                  </div>
-                </div>
-              </form>
+                    </select> */}
+                </Box>
+              </div>
             </div>
           </div>
         </div>

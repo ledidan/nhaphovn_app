@@ -165,7 +165,12 @@ export default function Navbar() {
                 <Typography
                   key={index}
                   onClick={handleCloseNavMenu}
-                  sx={{ color: "black", ml: 2, fontWeight: 600 }}
+                  fontSize={"15px"}
+                  sx={{
+                    color: "black",
+                    ml: 2,
+                    fontWeight: 600,
+                  }}
                 >
                   <Link href={`${page.urlLink}`}>{page.name} </Link>
                 </Typography>
@@ -178,19 +183,20 @@ export default function Navbar() {
                 display: { lg: "flex", md: "none", xs: "none" },
               }}
             >
-              <Tooltip title="Open settings">
-                <IconButton
-                  onClick={handleOpenUserMenu}
-                  sx={{ p: 0, size: "small" }}
-                >
-                  <Avatar sx={{ width: 30, height: 30 }} />
-                  <ExpandMoreIcon />
-                </IconButton>
-              </Tooltip>
+              <IconButton onClick={handleOpenUserMenu}>
+                <Avatar
+                  sx={{
+                    width: 30,
+                    height: 30,
+                  }}
+                />
+                <ExpandMoreIcon />
+              </IconButton>
               <Button
                 variant="outlined"
-                className="ml-5"
+                className="ml-2"
                 startIcon={<AddIcon />}
+                size="small"
               >
                 Đăng tin miễn phí
               </Button>
@@ -227,6 +233,7 @@ export default function Navbar() {
                 size="small"
                 aria-label="account of current user"
                 href="/tai-khoan/dang-tin"
+                sx={{ stroke: "#ffffff", strokeWidth: 1 }}
               >
                 <PostAddIcon
                   color="primary"
