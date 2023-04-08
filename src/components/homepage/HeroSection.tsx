@@ -119,7 +119,6 @@ const HeroSection = (props: any) => {
                     <Select
                       displayEmpty
                       value={age}
-                      label="Age"
                       onChange={handleChange}
                       open={selectOpen}
                       ref={menuRef}
