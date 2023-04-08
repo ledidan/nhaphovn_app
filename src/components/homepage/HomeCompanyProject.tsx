@@ -11,7 +11,9 @@ const HomeCompanyProject = () => {
     <section className="mt-5 mb-4 relative overflow-hidden">
       <Container className="home-project-company ">
         <div className="text-blue-700 mb-3 home-project--wrapper flex items-center justify-between">
-          <Typography variant="h5">Dự án mới nhất</Typography>
+          <Typography variant="inherit" fontSize={"25px"} fontWeight={700}>
+            Dự án mới nhất
+          </Typography>
           <Typography className="flex items-center text-end" variant="inherit">
             Xem thêm {">>"}
           </Typography>

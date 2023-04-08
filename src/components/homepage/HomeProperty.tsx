@@ -93,7 +93,9 @@ const HomeProperty = () => {
     <section className="home_properties relative overflow-hidden mt-16">
       <Container className="home_property_inner">
         <div className=" flex items-center justify-between">
-          <Typography variant="h5">Tin bán nhà phố mới nhất</Typography>
+          <Typography variant="inherit" fontSize={"25px"} fontWeight={700}>
+            Tin bán nhà phố mới nhất
+          </Typography>
           <Typography className="flex items-center text-end" variant="inherit">
             Xem thêm
           </Typography>

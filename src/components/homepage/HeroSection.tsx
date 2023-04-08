@@ -14,6 +14,11 @@ const HeroSection = (props: any) => {
     height: 500,
   };
   const [age, setAge] = React.useState<any>("");
+  const [priceRange, setPriceRange] = React.useState<any>("");
+  const [area, setArea] = React.useState<any>("");
+  const [ward, setWard] = React.useState<any>("");
+  const [purpose, setPurpose] = React.useState<any>("");
+  const [aspect, setAspect] = React.useState<any>("");
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [selectOpen, setSelectOpen] = React.useState(false);
   const [reset, setReset] = React.useState("");
@@ -49,11 +54,22 @@ const HeroSection = (props: any) => {
 
   const handleChange = (event: any) => {
     setAge(event.target.value);
+    setPriceRange(event.target.value);
+    setArea(event.target.value);
+    setWard(event.target.value);
+    setPurpose(event.target.value);
+    setAspect(event.target.value);
   };
 
   // Reset Form
   const resetForm = () => {
     setAge("");
+    setPriceRange("");
+    setArea("");
+    setWard("");
+    setPurpose("");
+    setPurpose("");
+    setAspect("");
   };
   // Catch menuRef with event click outside
   useOutsideClickDetector(menuRef, handleOutSideClick);
@@ -120,14 +136,16 @@ const HeroSection = (props: any) => {
                       displayEmpty
                       value={age}
                       onChange={handleChange}
+                      sx={{
+                        height: "40px",
+                        width: "120px",
+                      }}
                       open={selectOpen}
                       ref={menuRef}
                       onOpen={() => setSelectOpen(true)}
                       // renderValue={() => `${age}`}
                     >
-                      <MenuItem value="">
-                        <em>None</em>
-                      </MenuItem>
+                      <MenuItem value="">Toàn quốc</MenuItem>
                       <MenuItem value={10} onClick={handleClose}>
                         Ten
                       </MenuItem>
@@ -142,15 +160,125 @@ const HeroSection = (props: any) => {
                       open={open}
                       anchorEl={anchorEl}
                       onClose={handleClose}
-                      anchorOrigin={{
-                        vertical: "center",
-                        horizontal: "right",
+                      sx={{ width: 150, right: "930px", top: "-40px" }}
+                    >
+                      <MenuItem
+                        value={40}
+                        onClick={() => {
+                          setAge(40);
+                          setSelectOpen(false);
+                          handleClose();
+                        }}
+                        style={{
+                          maxWidth: 150,
+                        }}
+                      >
+                        Fourty
+                      </MenuItem>
+                      <MenuItem
+                        value={50}
+                        onClick={() => {
+                          setAge(50);
+                          setSelectOpen(false);
+                          handleClose();
+                        }}
+                        style={{
+                          maxWidth: 150,
+                        }}
+                      >
+                        Fifty
+                      </MenuItem>
+                    </Menu>
+                  </FormControl>
+                  <FormControl sx={{ m: 1, minWidth: 120 }}>
+                    <Select
+                      displayEmpty
+                      value={priceRange}
+                      onChange={handleChange}
+                      sx={{
+                        height: "40px",
+                        width: "120px",
                       }}
-                      transformOrigin={{
-                        vertical: "center",
-                        horizontal: "left",
+                      open={selectOpen}
+                      ref={menuRef}
+                      onOpen={() => setSelectOpen(true)}
+                      // renderValue={() => `${age}`}
+                    >
+                      <MenuItem value="">Toàn quốc</MenuItem>
+                      <MenuItem value={10} onClick={handleClose}>
+                        Ten
+                      </MenuItem>
+                      <MenuItem value={20} onClick={handleClose}>
+                        Twenty
+                      </MenuItem>
+                      <MenuItem value={30} onClick={handleClick}>
+                        Thirty {">"}
+                      </MenuItem>
+                    </Select>
+                    <Menu
+                      open={open}
+                      anchorEl={anchorEl}
+                      onClose={handleClose}
+                      sx={{ width: 150, right: "930px", top: "-40px" }}
+                    >
+                      <MenuItem
+                        value={40}
+                        onClick={() => {
+                          setAge(40);
+                          setSelectOpen(false);
+                          handleClose();
+                        }}
+                        style={{
+                          maxWidth: 150,
+                        }}
+                      >
+                        Fourty
+                      </MenuItem>
+                      <MenuItem
+                        value={50}
+                        onClick={() => {
+                          setAge(50);
+                          setSelectOpen(false);
+                          handleClose();
+                        }}
+                        style={{
+                          maxWidth: 150,
+                        }}
+                      >
+                        Fifty
+                      </MenuItem>
+                    </Menu>
+                  </FormControl>
+                  <FormControl sx={{ m: 1, minWidth: 120 }}>
+                    <Select
+                      displayEmpty
+                      value={area}
+                      onChange={handleChange}
+                      sx={{
+                        height: "40px",
+                        width: "120px",
                       }}
-                      sx={{ width: 150 }}
+                      open={selectOpen}
+                      ref={menuRef}
+                      onOpen={() => setSelectOpen(true)}
+                      // renderValue={() => `${age}`}
+                    >
+                      <MenuItem value="">Toàn quốc</MenuItem>
+                      <MenuItem value={10} onClick={handleClose}>
+                        Ten
+                      </MenuItem>
+                      <MenuItem value={20} onClick={handleClose}>
+                        Twenty
+                      </MenuItem>
+                      <MenuItem value={30} onClick={handleClick}>
+                        Thirty {">"}
+                      </MenuItem>
+                    </Select>
+                    <Menu
+                      open={open}
+                      anchorEl={anchorEl}
+                      onClose={handleClose}
+                      sx={{ width: 150, right: "930px", top: "-40px" }}
                     >
                       <MenuItem
                         value={40}

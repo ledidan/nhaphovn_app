@@ -90,7 +90,12 @@ const HomeMillions = () => {
   return (
     <Container className="relative overflow-hidden mt-20">
       <section className="home-millions flex items-center justify-between ">
-        <Typography variant="h5" color={"#dc3545"}>
+        <Typography
+          variant="inherit"
+          fontSize={"25px"}
+          fontWeight={700}
+          color={"#dc3545"}
+        >
           Nhà phố triệu đô
         </Typography>
         <Typography

@@ -18,7 +18,9 @@ const HomeCollection = () => {
   return (
     <Container className="relative overflow-hidden">
       <section className="text-blue-700 home-millions flex items-center justify-between ">
-        <Typography variant="h5">Bộ sưu tập nổi bật</Typography>
+        <Typography variant="inherit" fontSize={"25px"} fontWeight={700}>
+          Bộ sưu tập nổi bật
+        </Typography>
         <Typography className="flex items-center text-end" variant="inherit">
           Xem thêm
         </Typography>

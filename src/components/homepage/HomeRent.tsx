@@ -92,8 +92,10 @@ const HomeRent = () => {
   return (
     <section className="home_properties-rent relative overflow-hidden mb-8">
       <Container className="home_property_inner">
-        <div className="text-blue-700    flex items-center justify-between">
-          <Typography variant="h5">Tin cho thuê mới nhất</Typography>
+        <div className="text-blue-700 flex items-center justify-between">
+          <Typography variant="inherit" fontSize={"25px"} fontWeight={700}>
+            Tin cho thuê mới nhất
+          </Typography>
           <Typography className="flex items-center text-end" variant="inherit">
             Xem thêm
           </Typography>
